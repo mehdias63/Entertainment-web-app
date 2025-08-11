@@ -1,3 +1,4 @@
+import { SearchProvider } from './context/SearchContext'
 import './globals.css'
 
 export const metadata = {
@@ -9,7 +10,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body suppressHydrationWarning={true} className="bg-[#0E0F1A]">
-				{children}
+				<SearchProvider>{children}</SearchProvider>
 			</body>
 		</html>
 	)

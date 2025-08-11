@@ -14,7 +14,6 @@ export default function ContentCard({
 		onToggleBookmark(item.title)
 	}
 
-	// انتخاب آیکون بر اساس دسته‌بندی
 	const CategoryIcon = item.category === 'Movie' ? Film : Tv
 
 	return (
