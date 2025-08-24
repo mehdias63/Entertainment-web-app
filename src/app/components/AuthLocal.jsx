@@ -21,7 +21,7 @@ export default function AuthLocal() {
 		const storedUser = localStorage.getItem('authUser')
 		if (storedUser) {
 			setUser(JSON.parse(storedUser))
-			router.push('/') // کاربر قبلاً لاگین کرده → مستقیم به صفحه home
+			router.push('/')
 		}
 	}, [router])
 
@@ -63,7 +63,7 @@ export default function AuthLocal() {
 			if (users[email] && users[email] === password) {
 				localStorage.setItem('authUser', JSON.stringify({ email }))
 				setUser({ email })
-				router.push('/home') // بعد از لاگین برو به صفحه home
+				router.push('/home')
 			} else {
 				setMessage('❌ Invalid email or password')
 			}
@@ -75,7 +75,7 @@ export default function AuthLocal() {
 				localStorage.setItem('users', JSON.stringify(users))
 				localStorage.setItem('authUser', JSON.stringify({ email }))
 				setUser({ email })
-				router.push('/') // بعد از ثبت‌نام برو به صفحه home
+				router.push('/')
 			}
 		}
 	}

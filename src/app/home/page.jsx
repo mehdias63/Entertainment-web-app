@@ -1,12 +1,12 @@
 'use client'
-import ContentPage from '../components/ContentPage' // مسیر را طبق ساختارت تنظیم کن
+import ContentPage from '../components/ContentPage'
 
 export default function HomePage() {
 	return (
 		<ContentPage
 			title=""
 			placeholder="Search for movies or TV series"
-			filterFn={null} // همه آیتم‌ها
+			filterFn={null}
 			showTrending={true}
 			showRecommended={true}
 		/>

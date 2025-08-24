@@ -1,24 +1,23 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useSearch } from '../context/SearchContext' // مسیر را اگر لازم است اصلاح کن
+import { useSearch } from '../context/SearchContext'
 import Sidebar from './Sidebar'
 import SearchBar from './SearchBar'
 import TrendingList from './TrendingList'
 import RecommendedList from './RecommendedList'
 // import ContentGrid from './ContentGrid'
-import dataJson from '@/app/data.json' // اگر پروژه‌ات alias نداره، مسیر را به '../app/data.json' یا مسیر صحیح تغییر بده
+import dataJson from '@/app/data.json'
 
 export default function ContentPage({
 	title = '',
 	placeholder = 'Search...',
-	filterFn = null, // function(item) => boolean  — اگر null یعنی بدون فیلتر اولیه
+	filterFn = null,
 	showTrending = false,
 	showRecommended = false,
 }) {
 	const [data, setData] = useState([])
 	const { searchTerm } = useSearch()
 
-	// load data once (localStorage fallback)
 	useEffect(() => {
 		try {
 			const stored = JSON.parse(localStorage.getItem('moviesData'))
@@ -28,7 +27,6 @@ export default function ContentPage({
 		}
 	}, [])
 
-	// toggle bookmark — فقط اینجا مدیریت می‌شود
 	const handleToggleBookmark = title => {
 		setData(prev => {
 			const updated = prev.map(it =>
@@ -41,10 +39,8 @@ export default function ContentPage({
 		})
 	}
 
-	// apply initial page filter (Movies / TV / Bookmarked / all)
 	let pageItems = filterFn ? data.filter(filterFn) : data
 
-	// apply search (case-insensitive prefix search like requested)
 	const term = (searchTerm || '').trim().toLowerCase()
 	if (term) {
 		pageItems = pageItems.filter(it =>
@@ -58,8 +54,6 @@ export default function ContentPage({
 			<main className="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col items-center">
 				<div className="w-full max-w-[90rem]">
 					<SearchBar placeholder={placeholder} />
-
-					{/* If the page requests a Trending section */}
 					{showTrending && (
 						<div className="mt-6">
 							<TrendingList
@@ -68,8 +62,6 @@ export default function ContentPage({
 							/>
 						</div>
 					)}
-
-					{/* If the page requests Recommended */}
 					{showRecommended && (
 						<div className="mt-8">
 							<RecommendedList
@@ -78,8 +70,6 @@ export default function ContentPage({
 							/>
 						</div>
 					)}
-
-					{/* If neither trending nor recommended (generic grid page) */}
 					{!showTrending && !showRecommended && (
 						<section className="mt-6">
 							{title && (
