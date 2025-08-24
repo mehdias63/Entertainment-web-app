@@ -1,5 +1,6 @@
 import { SearchProvider } from './context/SearchContext'
 import './globals.css'
+import { outfit } from './ui/fonts'
 
 export const metadata = {
 	title: 'Create Next App',
@@ -9,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body suppressHydrationWarning={true} className="bg-[#0E0F1A]">
+			<body
+				suppressHydrationWarning={true}
+				className={`${outfit.className} antialiased bg-[#0E0F1A]`}
+			>
 				<SearchProvider>{children}</SearchProvider>
 			</body>
 		</html>
