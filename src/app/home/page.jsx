@@ -6,7 +6,7 @@ export default function HomePage() {
 		<ContentPage
 			title=""
 			placeholder="Search for movies or TV series"
-			filterFn={null}
+			filterFn={() => true}
 			showTrending={true}
 			showRecommended={true}
 		/>

@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body
 				suppressHydrationWarning={true}
-				className={`${outfit.className} antialiased bg-[#0E0F1A]`}
+				className={`${outfit.className} antialiased bg-[#0E0F1A] max-w-[120rem] flex flex-col items-center justify-center mx-auto`}
 			>
 				<SearchProvider>{children}</SearchProvider>
 			</body>

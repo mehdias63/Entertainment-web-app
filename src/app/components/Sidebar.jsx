@@ -15,8 +15,8 @@ export default function Sidebar() {
 	]
 
 	return (
-		<div className="bg-[#161D2F] p-4 rounded-xl flex md:flex-col items-center gap-6">
-			<img src="/assets/logo.svg" alt="logo" className="mb-6" />
+		<div className="bg-[#161D2F] p-4 rounded-xl flex lg:flex-col items-center gap-6">
+			<img src="/assets/logo.svg" alt="logo" className="lg:mb-6" />
 			{menu.map((item, index) => (
 				<button
 					key={index}
