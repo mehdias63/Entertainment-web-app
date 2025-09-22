@@ -1,4 +1,3 @@
-import { SearchProvider } from './context/SearchContext'
 import './globals.css'
 import { outfit } from './ui/fonts'
 
@@ -14,7 +13,7 @@ export default function RootLayout({ children }) {
 				suppressHydrationWarning={true}
 				className={`${outfit.className} antialiased bg-[#0E0F1A] max-w-[120rem] flex flex-col items-center justify-center mx-auto`}
 			>
-				<SearchProvider>{children}</SearchProvider>
+				{children}
 			</body>
 		</html>
 	)

@@ -5,7 +5,6 @@ import {
 	useRouter,
 	usePathname,
 } from 'next/navigation'
-import { useSearch } from '../context/SearchContext'
 import Sidebar from './Sidebar'
 import SearchBar from './SearchBar'
 import TrendingList from './TrendingList'
@@ -25,7 +24,6 @@ export default function ContentPage({
 	pageParamName = 'page',
 }) {
 	const [data, setData] = useState([])
-	const { searchTerm } = useSearch()
 	const searchParams = useSearchParams()
 	const router = useRouter()
 	const pathname = usePathname()
@@ -55,18 +53,19 @@ export default function ContentPage({
 	}
 
 	useEffect(() => {
-		if (currentPage === 1) return
-		const params = new URLSearchParams(
-			Array.from(searchParams?.entries() || []),
-		)
-		params.set(pageParamName, '1')
-		const qs = params.toString()
-		router.push(qs ? `${pathname}?${qs}` : pathname)
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [searchTerm])
+		const term = searchParams.get('query') || ''
+		if (currentPage !== 1 && term) {
+			const params = new URLSearchParams(
+				Array.from(searchParams?.entries() || []),
+			)
+			params.set(pageParamName, '1')
+			const qs = params.toString()
+			router.push(qs ? `${pathname}?${qs}` : pathname)
+		}
+	}, [searchParams, currentPage, pageParamName, pathname, router])
 
 	let pageItems = data.filter(filterFn)
-	const term = (searchTerm || '').trim().toLowerCase()
+	const term = (searchParams.get('query') || '').trim().toLowerCase()
 	if (term) {
 		pageItems = pageItems.filter(it =>
 			(it.title || '').toLowerCase().startsWith(term),
