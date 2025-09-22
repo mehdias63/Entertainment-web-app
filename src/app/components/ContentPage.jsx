@@ -15,6 +15,22 @@ import dataJson from '../data.json'
 
 const ITEMS_PER_PAGE = 4
 
+function NoResults({ query }) {
+	return (
+		<div className="flex flex-col items-center justify-center text-center text-gray-400 py-20 gap-y-4">
+			<span className="text-[2.5rem]">😕</span>
+			<h3 className="text-lg font-semibold text-white">
+				No results found
+			</h3>
+			{query && (
+				<p className="text-sm text-gray-400 mt-2">
+					We couldn’t find anything matching “{query}”
+				</p>
+			)}
+		</div>
+	)
+}
+
 export default function ContentPage({
 	title = '',
 	placeholder = 'Search...',
@@ -52,18 +68,6 @@ export default function ContentPage({
 		})
 	}
 
-	useEffect(() => {
-		const term = searchParams.get('query') || ''
-		if (currentPage !== 1 && term) {
-			const params = new URLSearchParams(
-				Array.from(searchParams?.entries() || []),
-			)
-			params.set(pageParamName, '1')
-			const qs = params.toString()
-			router.push(qs ? `${pathname}?${qs}` : pathname)
-		}
-	}, [searchParams, currentPage, pageParamName, pathname, router])
-
 	let pageItems = data.filter(filterFn)
 	const term = (searchParams.get('query') || '').trim().toLowerCase()
 	if (term) {
@@ -72,7 +76,7 @@ export default function ContentPage({
 		)
 	}
 
-	// --- حالت Home ---
+	// 🔹 حالت Home
 	if (showTrending && showRecommended) {
 		const trendingItems = pageItems.filter(it => it.isTrending)
 		const recommendedItems = pageItems.filter(it => !it.isTrending)
@@ -89,28 +93,33 @@ export default function ContentPage({
 		)
 
 		return (
-			<div className="min-h-screen bg-[#10141E] flex flex-col lg:flex-row">
+			<div className="min-h-screen flex flex-col lg:flex-row self-start">
 				<Sidebar />
 				<main className="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col">
 					<div className="w-full max-w-[90rem] flex-1">
 						<SearchBar placeholder={placeholder} />
 
-						<section className="mt-6 px-4">
-							<TrendingList
-								data={trendingItems}
-								onToggleBookmark={handleToggleBookmark}
-							/>
-						</section>
+						{pageItems.length === 0 ? (
+							<NoResults query={term} />
+						) : (
+							<>
+								<section className="mt-6 px-4">
+									<TrendingList
+										data={trendingItems}
+										onToggleBookmark={handleToggleBookmark}
+									/>
+								</section>
 
-						<section className="mt-8">
-							<RecommendedList
-								data={paginatedRecommended}
-								onToggleBookmark={handleToggleBookmark}
-							/>
-						</section>
+								<section className="mt-8">
+									<RecommendedList
+										data={paginatedRecommended}
+										onToggleBookmark={handleToggleBookmark}
+									/>
+								</section>
+							</>
+						)}
 					</div>
 
-					{/* --- Footer ثابت --- */}
 					<footer className="mt-auto">
 						{recommendedItems.length > ITEMS_PER_PAGE && (
 							<Pagination totalPages={totalRecPages} />
@@ -121,7 +130,7 @@ export default function ContentPage({
 		)
 	}
 
-	// --- سایر صفحات ---
+	// 🔹 سایر صفحات
 	const totalPages = Math.max(
 		1,
 		Math.ceil(pageItems.length / ITEMS_PER_PAGE),
@@ -134,7 +143,7 @@ export default function ContentPage({
 	)
 
 	return (
-		<div className="min-h-screen bg-[#10141E] flex flex-col lg:flex-row px-2">
+		<div className="min-h-screen flex flex-col lg:flex-row self-start">
 			<Sidebar />
 			<main className="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col">
 				<div className="w-full max-w-[90rem] flex-1">
@@ -145,13 +154,16 @@ export default function ContentPage({
 						</h2>
 					)}
 
-					<ContentGrid
-						data={paginatedItems}
-						onToggleBookmark={handleToggleBookmark}
-					/>
+					{pageItems.length === 0 ? (
+						<NoResults query={term} />
+					) : (
+						<ContentGrid
+							data={paginatedItems}
+							onToggleBookmark={handleToggleBookmark}
+						/>
+					)}
 				</div>
 
-				{/* --- Footer ثابت --- */}
 				<footer className="mt-auto">
 					{pageItems.length > ITEMS_PER_PAGE && (
 						<Pagination totalPages={totalPages} />
