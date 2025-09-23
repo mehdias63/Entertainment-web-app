@@ -1,4 +1,3 @@
-// components/ContentGrid.jsx
 'use client'
 import React from 'react'
 import ContentCard from './ContentCard'

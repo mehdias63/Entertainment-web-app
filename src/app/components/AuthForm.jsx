@@ -81,7 +81,6 @@ export default function AuthForm() {
 				localStorage.setItem('users', JSON.stringify(users))
 				localStorage.setItem('authUser', JSON.stringify({ email }))
 				setSuccessMessage('✅ Account created successfully!')
-				// بعد از 1.5 ثانیه ری‌دایرکت کن
 				setTimeout(() => router.push('/home'), 1500)
 			}
 		}

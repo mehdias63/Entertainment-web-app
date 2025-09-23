@@ -33,7 +33,6 @@ export default function Pagination({ totalPages = 1 }) {
 
 	if (!totalPages || totalPages <= 1) return null
 
-	// build pages array (you can enhance with ellipsis for many pages)
 	const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
 
 	return (

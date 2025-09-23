@@ -76,7 +76,6 @@ export default function ContentPage({
 		)
 	}
 
-	// 🔹 حالت Home
 	if (showTrending && showRecommended) {
 		const trendingItems = pageItems.filter(it => it.isTrending)
 		const recommendedItems = pageItems.filter(it => !it.isTrending)
@@ -130,7 +129,6 @@ export default function ContentPage({
 		)
 	}
 
-	// 🔹 سایر صفحات
 	const totalPages = Math.max(
 		1,
 		Math.ceil(pageItems.length / ITEMS_PER_PAGE),
