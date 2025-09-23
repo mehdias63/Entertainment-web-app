@@ -89,7 +89,7 @@ export default function AuthForm() {
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-[#0E0F1A] px-4">
-			<Card className="w-full max-w-sm bg-[#161D2F] text-white">
+			<Card className="w-full max-w-sm bg-[#161D2F] text-white text-lg md:text-xl lg:text-2xl border-none">
 				<CardHeader>
 					<CardTitle>{isLogin ? 'Login' : 'Sign Up'}</CardTitle>
 				</CardHeader>
@@ -148,7 +148,7 @@ export default function AuthForm() {
 				<CardFooter className="flex flex-col space-y-4">
 					<Button
 						onClick={handleAuth}
-						className="w-full bg-[#FC4747] hover:bg-white hover:text-black"
+						className="w-full bg-[#FC4747] hover:bg-white hover:text-black mt-8 mb-6"
 					>
 						{isLogin ? 'Login to your account' : 'Create account'}
 					</Button>
