@@ -20,8 +20,8 @@ export default function Sidebar() {
 			{menu.map((item, index) => (
 				<button
 					key={index}
-					className={`p-2 rounded-lg ${
-						pathname === item.path ? 'bg-[#FC4747]' : ''
+					className={`p-2 rounded-lg text-blue-500 cursor-pointer hover:text-red-500 ${
+						pathname === item.path ? 'text-white' : ''
 					}`}
 					onClick={() => router.push(item.path)}
 				>

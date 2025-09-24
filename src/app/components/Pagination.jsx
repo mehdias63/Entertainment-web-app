@@ -40,7 +40,7 @@ export default function Pagination({ totalPages = 1 }) {
 			<button
 				onClick={() => goToPage(currentPage - 1)}
 				disabled={currentPage <= 1}
-				className="px-3 py-1 bg-[#FC4747] text-white rounded disabled:opacity-50"
+				className="px-3 py-1 bg-[#FC4747] text-white rounded disabled:opacity-40 hover:bg-red-500/50 cursor-pointer"
 			>
 				Prev
 			</button>
@@ -49,7 +49,7 @@ export default function Pagination({ totalPages = 1 }) {
 				<button
 					key={num}
 					onClick={() => goToPage(num)}
-					className={`px-3 py-1 rounded ${
+					className={`px-3 py-1 rounded cursor-pointer hover:opacity-50 ${
 						num === currentPage
 							? 'bg-white text-[#10141E]'
 							: 'bg-[#161D2F] text-white'
@@ -62,7 +62,7 @@ export default function Pagination({ totalPages = 1 }) {
 			<button
 				onClick={() => goToPage(currentPage + 1)}
 				disabled={currentPage >= totalPages}
-				className="px-3 py-1 bg-[#FC4747] text-white rounded disabled:opacity-50"
+				className="px-3 py-1 bg-[#FC4747] text-white rounded disabled:opacity-40 hover:bg-red-500/50 cursor-pointer"
 			>
 				Next
 			</button>

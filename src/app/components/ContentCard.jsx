@@ -24,7 +24,7 @@ export default function ContentCard({
 				className="rounded-lg mb-2"
 			/>
 			<button
-				className="absolute top-2 right-2 bg-black/50 p-1 rounded-full"
+				className="absolute top-2 right-2 bg-black/50 p-1 rounded-full hover:bg-red-500/70 cursor-pointer"
 				onClick={handleBookmark}
 			>
 				{isBookmarked ? (

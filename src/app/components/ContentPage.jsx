@@ -13,7 +13,7 @@ import ContentGrid from './ContentGrid'
 import Pagination from './Pagination'
 import dataJson from '../data.json'
 
-const ITEMS_PER_PAGE = 4
+const ITEMS_PER_PAGE = 8
 
 function NoResults({ query }) {
 	return (
@@ -72,7 +72,7 @@ export default function ContentPage({
 	const term = (searchParams.get('query') || '').trim().toLowerCase()
 	if (term) {
 		pageItems = pageItems.filter(it =>
-			(it.title || '').toLowerCase().startsWith(term),
+			(it.title || '').toLowerCase().includes(term),
 		)
 	}
 
