@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 Entertainment Web App
 
-## Getting Started
+A modern entertainment web application built with Next.js, React,
+Tailwind CSS, and JavaScript. This project was developed as part of a
+Frontend Mentor challenge and provides users with an interactive
+platform to browse movies and TV series, search content, and manage
+bookmarks.
 
-First, run the development server:
+## 📸 Screenshot
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Entertainment Web App Screenshot](./public/assets/screenshot.png)
+
+## 🚀 Features
+
+- Browse movies and TV series
+- Navigate between Home, Movies, TV Series, and Bookmarked pages
+- Search across all available content
+- Add and remove items from bookmarks
+- Responsive design for all screen sizes
+- Dynamic content rendering from data sources
+- Interactive and user-friendly UI
+
+## 🛠️ Technologies Used
+
+- Next.js
+- React.js
+- JavaScript
+- Tailwind CSS
+
+## 📖 About The Project
+
+This project is an entertainment web application developed as part of
+a Frontend Mentor challenge, with the goal of recreating a modern and
+interactive media browsing experience.
+
+Users can explore a collection of movies and TV series, navigate
+through different sections such as Home, Movies, TV Series, and
+Bookmarked content, and search across the entire dataset. The
+application also allows users to add or remove items from their
+bookmarked list for quick access later.
+
+The main focus of this project was to translate a UI design into a
+fully functional and interactive web application while maintaining
+responsiveness and smooth user experience across different devices.
+
+This project demonstrates my ability to:
+
+- Build multi-page frontend applications
+- Manage application state effectively
+- Handle dynamic content rendering
+- Implement search and filtering functionality
+- Create responsive and modern UI layouts
+- Work with structured frontend architecture
+
+## 🎯 User Flow
+
+1. Browse content on the Home page.
+2. Navigate between Movies and TV Series sections.
+3. Search for specific content.
+4. Bookmark or remove items from the saved list.
+5. View bookmarked content in a dedicated page.
+
+## ▶️ Installation & Setup
+
+1. Clone the repository:
+
+```bash id="2k8x9a"
+git clone https://github.com/mehdias63/Entertainment-web-app.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash id="9p3q1d"
+cd entertainment-web-app
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Install dependencies:
 
-## Learn More
+```bash id="k4m7t2"
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash id="s8w1pl"
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Open your browser and visit:
 
-## Deploy on Vercel
+```text id="v6r9xq"
+http://localhost:3000
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Live Demo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[View Demo](https://entertainment-web-app-three-smoky.vercel.app/)
+
+## 👨‍💻 Author
+
+Developed by Mehdi Tatasadi
